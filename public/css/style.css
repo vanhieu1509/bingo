@@ -1,0 +1,146 @@
+@-webkit-keyframes glowing {
+  0% { background-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
+  50% { background-color: #0094FF; -webkit-box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #004A7F; -webkit-box-shadow: 0 0 3px #004A7F; }
+}
+ 
+@-moz-keyframes glowing {
+  0% { background-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
+  50% { background-color: #0094FF; -moz-box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #004A7F; -moz-box-shadow: 0 0 3px #004A7F; }
+}
+ 
+@-o-keyframes glowing {
+  0% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+}
+ 
+@keyframes glowing {
+  0% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+  50% { background-color: #0094FF; box-shadow: 0 0 50px #ff002f; }
+  100% { background-color: #004A7F; box-shadow: 0 0 3px #004A7F; }
+}
+body {
+
+    background-image: url("../img/Picture1.gif");
+    content: "";
+    opacity: 0.96;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: -1;   
+}
+.hinhtron {
+	 display: inline-block; 
+    background: #E6E6E6;
+   border-radius: 50%;
+  /* height: 63px;
+   width: 63px;*/
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+      
+}
+.inht {
+position: absolute;
+   background: white;
+   border-radius: 50%;
+   height: 65%;
+   width: 65%;
+	font-size:  3vw;
+	font-weight: bold;
+  line-height: 4vw;
+  text-align: center;
+   top: 50%;
+   left: 50%;
+   margin: -32.5% 0px 0px -32.5%;
+}
+div {
+    text-align: center;
+}
+.bigNumberDisplay {
+    font-size: 29em;
+    line-height: 309px;
+    display: inline-block;
+}
+
+.numbersTable {
+    font-size: 10px;
+}
+
+.container {
+  position: absolute;
+   width: 95%;
+    /*left: 0;*/
+    background-color: white;
+    /*text-align: center;*/
+    margin-left: 2.4%
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    border: solid 5px #000000;
+}
+
+td {
+    min-width: 50px;
+    text-align: center;
+    font-size: 30px;
+}
+
+div.selected1 {
+    background: radial-gradient(circle at 5px 5px,red,#000)
+    /*background: radial-gradient(circle at 5px 5px,#00FF40,#000) */
+    /*background: radial-gradient(circle at 5px 5px,#0080FF,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#8904B1,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#FFFF00,#000)*/
+}
+div.selected2 {
+    /*background: radial-gradient(circle at 5px 5px,red,#000)*/
+    background: radial-gradient(circle at 5px 5px,#00FF40,#000) 
+    /*background: radial-gradient(circle at 5px 5px,#0080FF,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#8904B1,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#FFFF00,#000)*/
+}
+div.selected3 {
+    /*background: radial-gradient(circle at 5px 5px,red,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#00FF40,#000) */
+    background: radial-gradient(circle at 5px 5px,#0080FF,#000)
+    /*background: radial-gradient(circle at 5px 5px,#8904B1,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#FFFF00,#000)*/
+}
+div.selected4 {
+    /*background: radial-gradient(circle at 5px 5px,red,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#00FF40,#000) */
+    /*background: radial-gradient(circle at 5px 5px,#0080FF,#000)*/
+    background: radial-gradient(circle at 5px 5px,#8904B1,#000)
+    /*background: radial-gradient(circle at 5px 5px,#FFFF00,#000)*/
+}
+
+div.selected5 {
+    /*background: radial-gradient(circle at 5px 5px,red,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#00FF40,#000) */
+    /*background: radial-gradient(circle at 5px 5px,#0080FF,#000)*/
+    /*background: radial-gradient(circle at 5px 5px,#8904B1,#000)*/
+    background: radial-gradient(circle at 5px 5px,#FFFF00,#000)
+}
+div.last_number {
+	-webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+.col-md-3.hinhtron {
+    width:19%;
+    padding-top:19%;
+    margin-left: 3.65px;
+    margin-top: 2px;
+}
+.col-md-4 {
+  /*padding-right:3.65;*/
+    /*padding-left:3.65px;*/
+}
+

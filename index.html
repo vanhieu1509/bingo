@@ -1,0 +1,209 @@
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='public/js/jquery-3.2.1.min.js' type="text/javascript"></script>
+    <script src='public/js/bootstrap.js' type="text/javascript"></script>
+    <script src='public/js/loto.js' type="text/javascript"></script>
+    <link href="public/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+        	<div class="col-md-5">
+        	<img src="public/img/logo.png" >
+        	<div style="margin-top: 90px">
+        		 <input class="btn btn-primary btn-lg" id="btnStart" type="button" value="START"/>
+            <input style="display: none;" class="btn btn-danger btn-lg" id="btnStop" type="button" value="PAUSE"/>
+            <input class="btn btn-warning btn-lg" id="btnReset" type="button" value="RESET RESULT" data-toggle="modal" data-target="#myModal"/>
+             <input style="display: none;" id="btnGenerate" type="button" value="Generate"/>
+             </div>
+        	</div>
+        	<div class="col-md-7 text-left">
+        		<div class='bigNumberDisplay'>
+        			 <p>00</p>
+        		</div>
+        	</div>
+        </div>
+        
+        <div class="row">
+        <div class="col-md-12">
+        	<div class="progress">
+              <div class="progress-bar progress-bar-warning" role="progressbar" style="width: 0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>
+        </div>    
+    <div class="row">
+    <div class="col-md-12">
+    <div class="numbersTable">
+    <div class=" row">
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell1"><div class="hinhtron inht">1</div></div>
+    <div class="col-md-3 hinhtron cell2"><div class="hinhtron inht">2</div></div>
+    <div class="col-md-3 hinhtron cell3"><div class="hinhtron inht">3</div></div>
+    <div class="col-md-3 hinhtron cell4"><div class="hinhtron inht">4</div></div>
+    <div class="col-md-3 hinhtron cell5"><div class="hinhtron inht">5</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell6"><div class="hinhtron inht">6</div></div>
+    <div class="col-md-3 hinhtron cell7"><div class="hinhtron inht">7</div></div>
+    <div class="col-md-3 hinhtron cell8"><div class="hinhtron inht">8</div></div>
+    <div class="col-md-3 hinhtron cell9"><div class="hinhtron inht">9</div></div>
+    <div class="col-md-3 hinhtron cell10"><div class="hinhtron inht">10</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell11"><div class="hinhtron inht">11</div></div>
+    <div class="col-md-3 hinhtron cell12"><div class="hinhtron inht">12</div></div>
+    <div class="col-md-3 hinhtron cell13"><div class="hinhtron inht">13</div></div>
+    <div class="col-md-3 hinhtron cell14"><div class="hinhtron inht">14</div></div>
+    <div class="col-md-3 hinhtron cell15"><div class="hinhtron inht">15</div></div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell16"><div class="hinhtron inht">16</div></div>
+    <div class="col-md-3 hinhtron cell17"><div class="hinhtron inht">17</div></div>
+    <div class="col-md-3 hinhtron cell18"><div class="hinhtron inht">18</div></div>
+    <div class="col-md-3 hinhtron cell19"><div class="hinhtron inht">19</div></div>
+    <div class="col-md-3 hinhtron cell20"><div class="hinhtron inht">20</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell21"><div class="hinhtron inht">21</div></div>
+    <div class="col-md-3 hinhtron cell22"><div class="hinhtron inht">22</div></div>
+    <div class="col-md-3 hinhtron cell23"><div class="hinhtron inht">23</div></div>
+    <div class="col-md-3 hinhtron cell24"><div class="hinhtron inht">24</div></div>
+    <div class="col-md-3 hinhtron cell25"><div class="hinhtron inht">25</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell26"><div class="hinhtron inht">26</div></div>
+    <div class="col-md-3 hinhtron cell27"><div class="hinhtron inht">27</div></div>
+    <div class="col-md-3 hinhtron cell28"><div class="hinhtron inht">28</div></div>
+    <div class="col-md-3 hinhtron cell29"><div class="hinhtron inht">29</div></div>
+    <div class="col-md-3 hinhtron cell30"><div class="hinhtron inht">30</div></div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell31"><div class="hinhtron inht">31</div></div>
+    <div class="col-md-3 hinhtron cell32"><div class="hinhtron inht">32</div></div>
+    <div class="col-md-3 hinhtron cell33"><div class="hinhtron inht">33</div></div>
+    <div class="col-md-3 hinhtron cell34"><div class="hinhtron inht">34</div></div>
+    <div class="col-md-3 hinhtron cell35"><div class="hinhtron inht">35</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell36"><div class="hinhtron inht">36</div></div>
+    <div class="col-md-3 hinhtron cell37"><div class="hinhtron inht">37</div></div>
+    <div class="col-md-3 hinhtron cell38"><div class="hinhtron inht">38</div></div>
+    <div class="col-md-3 hinhtron cell39"><div class="hinhtron inht">39</div></div>
+    <div class="col-md-3 hinhtron cell40"><div class="hinhtron inht">40</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell41"><div class="hinhtron inht">41</div></div>
+    <div class="col-md-3 hinhtron cell42"><div class="hinhtron inht">42</div></div>
+    <div class="col-md-3 hinhtron cell43"><div class="hinhtron inht">43</div></div>
+    <div class="col-md-3 hinhtron cell44"><div class="hinhtron inht">44</div></div>
+    <div class="col-md-3 hinhtron cell45"><div class="hinhtron inht">45</div></div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell46"><div class="hinhtron inht">46</div></div>
+    <div class="col-md-3 hinhtron cell47"><div class="hinhtron inht">47</div></div>
+    <div class="col-md-3 hinhtron cell48"><div class="hinhtron inht">48</div></div>
+    <div class="col-md-3 hinhtron cell49"><div class="hinhtron inht">49</div></div>
+    <div class="col-md-3 hinhtron cell50"><div class="hinhtron inht">50</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell51"><div class="hinhtron inht">51</div></div>
+    <div class="col-md-3 hinhtron cell52"><div class="hinhtron inht">52</div></div>
+    <div class="col-md-3 hinhtron cell53"><div class="hinhtron inht">53</div></div>
+    <div class="col-md-3 hinhtron cell54"><div class="hinhtron inht">54</div></div>
+    <div class="col-md-3 hinhtron cell55"><div class="hinhtron inht">55</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell56"><div class="hinhtron inht">56</div></div>
+    <div class="col-md-3 hinhtron cell57"><div class="hinhtron inht">57</div></div>
+    <div class="col-md-3 hinhtron cell58"><div class="hinhtron inht">58</div></div>
+    <div class="col-md-3 hinhtron cell59"><div class="hinhtron inht">59</div></div>
+    <div class="col-md-3 hinhtron cell60"><div class="hinhtron inht">60</div></div>
+    </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell61"><div class="hinhtron inht">61</div></div>
+    <div class="col-md-3 hinhtron cell62"><div class="hinhtron inht">62</div></div>
+    <div class="col-md-3 hinhtron cell63"><div class="hinhtron inht">63</div></div>
+    <div class="col-md-3 hinhtron cell64"><div class="hinhtron inht">64</div></div>
+    <div class="col-md-3 hinhtron cell65"><div class="hinhtron inht">65</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell66"><div class="hinhtron inht">66</div></div>
+    <div class="col-md-3 hinhtron cell67"><div class="hinhtron inht">67</div></div>
+    <div class="col-md-3 hinhtron cell68"><div class="hinhtron inht">68</div></div>
+    <div class="col-md-3 hinhtron cell69"><div class="hinhtron inht">69</div></div>
+    <div class="col-md-3 hinhtron cell70"><div class="hinhtron inht">70</div></div>
+    </div>
+    </div>
+    <div class="col-md-4">
+    <div class="row">
+    <div class="col-md-3 hinhtron cell71"><div class="hinhtron inht">71</div></div>
+    <div class="col-md-3 hinhtron cell72"><div class="hinhtron inht">72</div></div>
+    <div class="col-md-3 hinhtron cell73"><div class="hinhtron inht">73</div></div>
+    <div class="col-md-3 hinhtron cell74"><div class="hinhtron inht">74</div></div>
+    <div class="col-md-3 hinhtron cell75"><div class="hinhtron inht">75</div></div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+            <div class="row">
+            <img src="public/img/logo.png" >
+            <img src="public/img/bingo-logo.png" >
+        </div>
+    </div>
+</div>
+<div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">WARNING</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to reset result ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" id='reset'>RESET !!</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
