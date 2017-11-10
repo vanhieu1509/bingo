@@ -68,7 +68,7 @@ $(document).ready(function() {
             if (value > 100) {
                 return 0;
             }
-            return setTimeout(barAnim, 130);
+            return setTimeout(barAnim, 200);
         }
 
         function barAnim2() {
@@ -82,7 +82,7 @@ $(document).ready(function() {
             if (value > 100) {
                 return 0;
             }
-            return setTimeout(barAnim2, 92);
+            return setTimeout(barAnim2, 165);
         }
 
         function getAudio(play) {
@@ -135,7 +135,7 @@ $(document).ready(function() {
                 }, 3000);
             }
         });
-        var time = 13000;
+        var time = 20000;
         $('#btnStart').click(function() {
             value = 0;
             theTrack.play()

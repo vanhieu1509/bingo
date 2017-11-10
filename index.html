@@ -10,19 +10,24 @@
 <body>
     <div class="container text-center">
         <div class="row">
-        	<div class="col-md-5">
+        	<div class="col-md-4">
         	<img src="public/img/logo.png" >
         	<div style="margin-top: 90px">
-        		 <input class="btn btn-primary btn-lg" id="btnStart" type="button" value="START"/>
-            <input style="display: none;" class="btn btn-danger btn-lg" id="btnStop" type="button" value="PAUSE"/>
-            <input class="btn btn-warning btn-lg" id="btnReset" type="button" value="RESET RESULT" data-toggle="modal" data-target="#myModal"/>
+        		 <input style="width: 50%" class="btn btn-primary btn-lg" id="btnStart" type="button" value="START"/>
+            <input style="display: none; width: 50%" class="btn btn-danger btn-lg" id="btnStop" type="button" value="PAUSE"/>
              <input style="display: none;" id="btnGenerate" type="button" value="Generate"/>
              </div>
         	</div>
-        	<div class="col-md-7 text-left">
+        	<div class="col-md-5 text-left">
         		<div class='bigNumberDisplay'>
         			 <p>00</p>
         		</div>
+        	</div>
+        	<div class="col-md-3">
+        	<img width="80%" src="public/img/bingo-logo.png" >
+        	<div style="margin-top: 80px">
+        	 <input style="width: 66.67%" class="btn btn-warning btn-lg" id="btnReset" type="button" value="RESET RESULT" data-toggle="modal" data-target="#myModal"/>
+        	 </div>
         	</div>
         </div>
         
@@ -183,10 +188,7 @@
     </div>
     </div>
     </div>
-            <div class="row">
-            <img src="public/img/logo.png" >
-            <img src="public/img/bingo-logo.png" >
-        </div>
+            
     </div>
 </div>
 <div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
