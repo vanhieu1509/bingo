@@ -82,181 +82,180 @@ $(document).ready(function() {
         var theTrack = getAudio(false);
         $('#btnGenerate').click(function() {
             if (bingo.selectedNumbers.length == 75) {
-                setTimeout(function(){
-                count = 1;
-            clearTimeout(window.click_start);
-            clearTimeout(window.delay);
-            clearTimeout(window.click_random);
-            clearInterval(window.loto);
-            clearInterval(window.txt);
-            removeBarAnim();
-            $('#btnStart').show();
-            $('#btnStop').hide();
-                alert('COMPLETE');
-                return 0;
-                },2000);
+                setTimeout(function() {
+                    count = 1;
+                    clearTimeout(window.click_start);
+                    clearTimeout(window.delay);
+                    clearTimeout(window.click_random);
+                    clearInterval(window.loto);
+                    clearInterval(window.txt);
+                    removeBarAnim();
+                    $('#btnStart').show();
+                    $('#btnStop').hide();
+                    alert('COMPLETE');
+                    return 0;
+                }, 2000);
 
-                
+
             } else {
-            if (count ==2){
+                if (count == 2) {
 
 
-            window.click_start = setTimeout(function() {
-                removeBarAnim();
-                clearTimeout(barAnim);
-                  clearInterval(window.txt);
+                    window.click_start = setTimeout(function() {
+                        removeBarAnim();
+                        clearTimeout(barAnim);
+                        clearInterval(window.txt);
+                        var random = bingo.generateNextRandom().toString();
+                        localStorage.setItem("lastresult", JSON.stringify(bingo.selectedNumbers));
+                        $('.bigNumberDisplay p').text(random);
+                        $('div.cell' + random).addClass('last_number');
+                        if (random <= 15) {
+                            $('div.cell' + random).addClass('selected1');
+                        } else if (random <= 30) {
+                            $('div.cell' + random).addClass('selected2');
+                        } else if (random <= 45) {
+                            $('div.cell' + random).addClass('selected3');
+                        } else if (random <= 60) {
+                            $('div.cell' + random).addClass('selected4');
+                        } else {
+                            $('div.cell' + random).addClass('selected5');
+
+                        }
+
+                        theTrack.volume = 0.2;
+
+                        var msg = new SpeechSynthesisUtterance();
+                        msg.text = random;
+                        msg.lang = 'sw-KE';
+                        window.speechSynthesis.speak(msg);
+                        clearInterval(window.txt);
+                        removeBarAnim();
+                        if (bingo.selectedNumbers.length == 7) {
+                            setTimeout(function() {
+                                count = 1;
+                                clearTimeout(window.click_start);
+                                clearTimeout(window.delay);
+                                clearTimeout(window.click_random);
+                                clearInterval(window.loto);
+                                clearInterval(window.txt);
+                                removeBarAnim();
+                                $('#btnStart').show();
+                                $('#btnStop').hide();
+                                alert('COMPLETE');
+                                return 0;
+                            }, 2000);
+
+
+                        }
+                        $('#btnStart').trigger('click');
+                    }, 12000);
+
+                } else {
+
+
                     var random = bingo.generateNextRandom().toString();
-            localStorage.setItem("lastresult", JSON.stringify(bingo.selectedNumbers));
-            $('.bigNumberDisplay p').text(random);
-            $('div.cell' + random).addClass('last_number');
-            if (random <= 15) {
-                $('div.cell' + random).addClass('selected1');
-            } else if (random <= 30) {
-                $('div.cell' + random).addClass('selected2');
-            } else if (random <= 45) {
-                $('div.cell' + random).addClass('selected3');
-            } else if (random <= 60) {
-                $('div.cell' + random).addClass('selected4');
-            } else {
-                $('div.cell' + random).addClass('selected5');
+                    localStorage.setItem("lastresult", JSON.stringify(bingo.selectedNumbers));
+                    $('.bigNumberDisplay p').text(random);
+                    $('div.cell' + random).addClass('last_number');
+                    if (random <= 15) {
+                        $('div.cell' + random).addClass('selected1');
+                    } else if (random <= 30) {
+                        $('div.cell' + random).addClass('selected2');
+                    } else if (random <= 45) {
+                        $('div.cell' + random).addClass('selected3');
+                    } else if (random <= 60) {
+                        $('div.cell' + random).addClass('selected4');
+                    } else {
+                        $('div.cell' + random).addClass('selected5');
 
+                    }
+
+                    clearInterval(window.txt);
+                    theTrack.volume = 0.2;
+                    var msg = new SpeechSynthesisUtterance();
+                    msg.text = random;
+                    msg.lang = 'sw-KE';
+                    window.speechSynthesis.speak(msg);
+                    removeBarAnim();
+                    if (bingo.selectedNumbers.length == 75) {
+                        setTimeout(function() {
+                            count = 1;
+                            clearTimeout(window.click_start);
+                            clearTimeout(window.delay);
+                            clearTimeout(window.click_random);
+                            clearInterval(window.loto);
+                            clearInterval(window.txt);
+                            removeBarAnim();
+                            $('#btnStart').show();
+                            $('#btnStop').hide();
+                            alert('COMPLETE');
+                        }, 2000);
+
+                    } else {
+                        $('#btnStart').trigger('click');
+                    }
+                }
             }
-
-    theTrack.volume = 0.2;
-
-            var msg = new SpeechSynthesisUtterance();
-            msg.text = random;
-            msg.lang = 'sw-KE';
-            window.speechSynthesis.speak(msg);
-            clearInterval(window.txt);
-            removeBarAnim();
-            if (bingo.selectedNumbers.length == 7) {
-                setTimeout(function(){
-                count = 1;
-            clearTimeout(window.click_start);
-            clearTimeout(window.delay);
-            clearTimeout(window.click_random);
-            clearInterval(window.loto);
-            clearInterval(window.txt);
-            removeBarAnim();
-            $('#btnStart').show();
-            $('#btnStop').hide();
-                alert('COMPLETE');
-                return 0;
-                },2000);
-
-                
-            }
-             $('#btnStart').trigger('click');
-                }, 12000);
-            
-        } else {
-
-
-            var random = bingo.generateNextRandom().toString();
-            localStorage.setItem("lastresult", JSON.stringify(bingo.selectedNumbers));
-            $('.bigNumberDisplay p').text(random);
-            $('div.cell' + random).addClass('last_number');
-            if (random <= 15) {
-                $('div.cell' + random).addClass('selected1');
-            } else if (random <= 30) {
-                $('div.cell' + random).addClass('selected2');
-            } else if (random <= 45) {
-                $('div.cell' + random).addClass('selected3');
-            } else if (random <= 60) {
-                $('div.cell' + random).addClass('selected4');
-            } else {
-                $('div.cell' + random).addClass('selected5');
-
-            }
-
-clearInterval(window.txt);
-theTrack.volume = 0.2;
-            var msg = new SpeechSynthesisUtterance();
-            msg.text = random;
-            msg.lang = 'sw-KE';
-            window.speechSynthesis.speak(msg);
-            removeBarAnim();
-            if (bingo.selectedNumbers.length == 75) {
-                setTimeout(function(){
-               count = 1;
-            clearTimeout(window.click_start);
-            clearTimeout(window.delay);
-            clearTimeout(window.click_random);
-            clearInterval(window.loto);
-            clearInterval(window.txt);
-            removeBarAnim();
-            $('#btnStart').show();
-            $('#btnStop').hide();
-                alert('COMPLETE');
-                },2000);
-                
-            } else {
-            $('#btnStart').trigger('click');
-        }
-        }
-    }
         });
         var count = 1;
         var time = 14000;
         $('#btnStart').click(function() {
             if (bingo.selectedNumbers.length == 75) {
                 count = 1;
+                clearTimeout(window.click_start);
+                clearTimeout(window.delay);
+                clearTimeout(window.click_random);
+                clearInterval(window.loto);
+                clearInterval(window.txt);
+                removeBarAnim();
+                $('#btnStart').show();
+                $('#btnStop').hide();
+                alert('COMPLETE');
+            } else {
+                if (count == 1) {
+                    value = 0;
+                    theTrack.play()
+                    theTrack.volume = 1;
+                    barAnim();
+                    window.txt = setInterval(function() {
+                        var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
+                        $('.bigNumberDisplay p').text(random);
+                    }, 100);
+                    count++;
+                    $('#btnGenerate').trigger('click');
+                } else {
+                    count++;
+
+                    window.delay = setTimeout(function() {
+                        value = 0;
+                        barAnim();
+                        window.txt = setInterval(function() {
+                            var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
+                            $('.bigNumberDisplay p').text(random);
+                        }, 100);
+                        theTrack.volume = 1;
+                        window.click_random = setTimeout(function() {
+                            $('#btnGenerate').trigger('click');
+                        }, 12000);
+                    }, 5500);
+
+
+                }
+
+
+
+                $('#btnStart').hide();
+                $('#btnStop').show();
+            }
+        });
+        $('#btnStop').click(function() {
+            count = 1;
             clearTimeout(window.click_start);
             clearTimeout(window.delay);
             clearTimeout(window.click_random);
             clearInterval(window.loto);
             clearInterval(window.txt);
             removeBarAnim();
-            $('#btnStart').show();
-            $('#btnStop').hide();
-                alert('COMPLETE');
-            } else {
-            if (count == 1){
-                 value = 0;
-                theTrack.play()
-                theTrack.volume = 1;
-                barAnim();
-                window.txt = setInterval(function() {
-                    var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
-                    $('.bigNumberDisplay p').text(random);
-                }, 100);
-                count++;
-                $('#btnGenerate').trigger('click');
-            }
-            else {
-                count++;
-
-               window.delay = setTimeout(function(){
-                value = 0;
-                 barAnim();
-                window.txt = setInterval(function() {
-                    var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
-                    $('.bigNumberDisplay p').text(random);
-                }, 100);
-                theTrack.volume = 1;
-                window.click_random = setTimeout(function() {
-                    $('#btnGenerate').trigger('click');
-                }, 12000);
-            }, 5500);
-               
-
-                }
-            
-            
-           
-            $('#btnStart').hide();
-            $('#btnStop').show();
-        }
-        });
-        $('#btnStop').click(function() {
-            count = 1;
-        	clearTimeout(window.click_start);
-            clearTimeout(window.delay);
-            clearTimeout(window.click_random);
-            clearInterval(window.loto);
-            clearInterval(window.txt);
-             removeBarAnim();
             $('.bigNumberDisplay p').text('00');
             // theTrack.pause()
             // temp = value;
@@ -266,22 +265,20 @@ theTrack.volume = 0.2;
             $('#btnStop').hide();
         });
         $('#reset').click(function() {
-        localStorage.clear();
-         window.location.reload();       
+            localStorage.clear();
+            window.location.reload();
         });
 
-        $(document).keypress(function(event){
-  var keycode = (event.keyCode ? event.keyCode : event.which);
-  if (keycode == '32') {
-  	event.preventDefault();
-    if($('#btnStart').is(':visible'))
-	{
-		$('#btnStart').trigger('click');
-	}
-	else if ($('#btnStop').is(':visible')){
-		$('#btnStop').trigger('click');
-	}
-  }
-});
+        $(document).keypress(function(event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '32') {
+                event.preventDefault();
+                if ($('#btnStart').is(':visible')) {
+                    $('#btnStart').trigger('click');
+                } else if ($('#btnStop').is(':visible')) {
+                    $('#btnStop').trigger('click');
+                }
+            }
+        });
     });
 });
