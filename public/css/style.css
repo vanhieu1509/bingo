@@ -41,9 +41,11 @@
 }
 body {
 
-    background-image: url("../img/Picture1.gif");
+    background-image: url("../img/background_lampart.JPG");
     content: "";
-    opacity: 0.96;
+    background-repeat:no-repeat;
+background-position: center center;
+    opacity: 0.9;
     position: absolute;
     top: 0;
     bottom: 0;

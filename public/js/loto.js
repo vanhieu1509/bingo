@@ -58,31 +58,17 @@ $(document).ready(function() {
         var value = 0;
 
         function removeBarAnim() {
-            value = 0;
+            value = -1;
             $(".progress-bar").css("width", "0%").attr("aria-valuenow", 0);
         }
 
         function barAnim() {
             value += 1;
             $(".progress-bar").css("width", value + "%").attr("aria-valuenow", value);
-            if (value > 100) {
+            if (value > 100 || value == 0) {
                 return 0;
             }
-            return setTimeout(barAnim, 200);
-        }
-
-        function barAnim2() {
-            value += 1;
-            if (value < 10) {
-                temp = 0;
-            } else {
-                temp = value;
-            }
-            $(".progress-bar").css("width", temp + "%").attr("aria-valuenow", temp);
-            if (value > 100) {
-                return 0;
-            }
-            return setTimeout(barAnim2, 165);
+            return setTimeout(barAnim, 115);
         }
 
         function getAudio(play) {
@@ -95,8 +81,78 @@ $(document).ready(function() {
 
         var theTrack = getAudio(false);
         $('#btnGenerate').click(function() {
+            if (bingo.selectedNumbers.length == 75) {
+                setTimeout(function(){
+                count = 1;
+            clearTimeout(window.click_start);
+            clearTimeout(window.delay);
+            clearTimeout(window.click_random);
+            clearInterval(window.loto);
             clearInterval(window.txt);
             removeBarAnim();
+            $('#btnStart').show();
+            $('#btnStop').hide();
+                alert('COMPLETE');
+                return 0;
+                },2000);
+
+                
+            } else {
+            if (count ==2){
+
+
+            window.click_start = setTimeout(function() {
+                removeBarAnim();
+                clearTimeout(barAnim);
+                  clearInterval(window.txt);
+                    var random = bingo.generateNextRandom().toString();
+            localStorage.setItem("lastresult", JSON.stringify(bingo.selectedNumbers));
+            $('.bigNumberDisplay p').text(random);
+            $('div.cell' + random).addClass('last_number');
+            if (random <= 15) {
+                $('div.cell' + random).addClass('selected1');
+            } else if (random <= 30) {
+                $('div.cell' + random).addClass('selected2');
+            } else if (random <= 45) {
+                $('div.cell' + random).addClass('selected3');
+            } else if (random <= 60) {
+                $('div.cell' + random).addClass('selected4');
+            } else {
+                $('div.cell' + random).addClass('selected5');
+
+            }
+
+    theTrack.volume = 0.2;
+
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = random;
+            msg.lang = 'sw-KE';
+            window.speechSynthesis.speak(msg);
+            clearInterval(window.txt);
+            removeBarAnim();
+            if (bingo.selectedNumbers.length == 7) {
+                setTimeout(function(){
+                count = 1;
+            clearTimeout(window.click_start);
+            clearTimeout(window.delay);
+            clearTimeout(window.click_random);
+            clearInterval(window.loto);
+            clearInterval(window.txt);
+            removeBarAnim();
+            $('#btnStart').show();
+            $('#btnStop').hide();
+                alert('COMPLETE');
+                return 0;
+                },2000);
+
+                
+            }
+             $('#btnStart').trigger('click');
+                }, 12000);
+            
+        } else {
+
+
             var random = bingo.generateNextRandom().toString();
             localStorage.setItem("lastresult", JSON.stringify(bingo.selectedNumbers));
             $('.bigNumberDisplay p').text(random);
@@ -114,58 +170,98 @@ $(document).ready(function() {
 
             }
 
-
+clearInterval(window.txt);
+theTrack.volume = 0.2;
             var msg = new SpeechSynthesisUtterance();
             msg.text = random;
             msg.lang = 'sw-KE';
             window.speechSynthesis.speak(msg);
+            removeBarAnim();
             if (bingo.selectedNumbers.length == 75) {
-                clearInterval(window.loto);
-                alert('da het so');
+                setTimeout(function(){
+               count = 1;
+            clearTimeout(window.click_start);
+            clearTimeout(window.delay);
+            clearTimeout(window.click_random);
+            clearInterval(window.loto);
+            clearInterval(window.txt);
+            removeBarAnim();
+            $('#btnStart').show();
+            $('#btnStop').hide();
+                alert('COMPLETE');
+                },2000);
+                
             } else {
-                setTimeout(function() {
-                    window.txt = setInterval(function() {
-                        var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
-                        $('.bigNumberDisplay p').text(random);
-                    }, 100);
-                    barAnim2();
-
-                    theTrack.volume = 1;
-
-                }, 3000);
-            }
+            $('#btnStart').trigger('click');
+        }
+        }
+    }
         });
-        var time = 20000;
+        var count = 1;
+        var time = 14000;
         $('#btnStart').click(function() {
-            value = 0;
-            theTrack.play()
-            window.delay = setTimeout(function() {
+            if (bingo.selectedNumbers.length == 75) {
+                count = 1;
+            clearTimeout(window.click_start);
+            clearTimeout(window.delay);
+            clearTimeout(window.click_random);
+            clearInterval(window.loto);
+            clearInterval(window.txt);
+            removeBarAnim();
+            $('#btnStart').show();
+            $('#btnStop').hide();
+                alert('COMPLETE');
+            } else {
+            if (count == 1){
+                 value = 0;
+                theTrack.play()
+                theTrack.volume = 1;
                 barAnim();
                 window.txt = setInterval(function() {
                     var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
                     $('.bigNumberDisplay p').text(random);
                 }, 100);
-            }, 300);
+                count++;
+                $('#btnGenerate').trigger('click');
+            }
+            else {
+                count++;
 
-            window.loto = setInterval(function() {
-                theTrack.volume = 0.2;
-                // theTrack.currentTime = 0;
-                setTimeout(function() {
+               window.delay = setTimeout(function(){
+                value = 0;
+                 barAnim();
+                window.txt = setInterval(function() {
+                    var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
+                    $('.bigNumberDisplay p').text(random);
+                }, 100);
+                theTrack.volume = 1;
+                window.click_random = setTimeout(function() {
                     $('#btnGenerate').trigger('click');
-                }, 1000);
-            }, time);
+                }, 12000);
+            }, 5500);
+               
+
+                }
+            
+            
+           
             $('#btnStart').hide();
             $('#btnStop').show();
+        }
         });
         $('#btnStop').click(function() {
-        	clearTimeout(window.delay);
+            count = 1;
+        	clearTimeout(window.click_start);
+            clearTimeout(window.delay);
+            clearTimeout(window.click_random);
             clearInterval(window.loto);
             clearInterval(window.txt);
+             removeBarAnim();
             $('.bigNumberDisplay p').text('00');
             // theTrack.pause()
-            temp = value;
-            value = 101;
-            $(".progress-bar").css("width", temp + "%").attr("aria-valuenow", temp);
+            // temp = value;
+            // value = 101;
+            // $(".progress-bar").css("width", temp + "%").attr("aria-valuenow", temp);
             $('#btnStart').show();
             $('#btnStop').hide();
         });
