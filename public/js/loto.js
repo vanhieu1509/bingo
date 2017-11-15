@@ -73,6 +73,7 @@ $(document).ready(function() {
 
         function getAudio(play) {
             var audio = new Audio("public/sound/beat.mp3");
+			
             if (play) {
                 audio.play();
             }
@@ -80,6 +81,10 @@ $(document).ready(function() {
         }
 
         var theTrack = getAudio(false);
+		theTrack.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
         $('#btnGenerate').click(function() {
             if (bingo.selectedNumbers.length == 75) {
                 setTimeout(function() {
@@ -215,6 +220,7 @@ $(document).ready(function() {
                 if (count == 1) {
                     value = 0;
                     theTrack.play()
+					
                     theTrack.volume = 1;
                     barAnim();
                     window.txt = setInterval(function() {
