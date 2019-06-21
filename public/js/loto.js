@@ -63,19 +63,22 @@ $(document).ready(function () {
                     msg.lang = 'sw-KE';
                     window.speechSynthesis.speak(msg);
                     window.value = 0;
-                    timeoutObj = sleep(waiting);
-                    timeoutObj.promise.then(function (){
-                        $(".progress-bar").css("width", window.value + "%").attr("aria-valuenow", window.value);
-                        var test = sleep(550);
-                        test.promise.then(function(){
-                            window.random_number = setInterval(function () {
-                                var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
-                                $('.bigNumberDisplay p').text(random);
-                            }, 100);
-                            window.id = setInterval(frame, time_runing / 100);
-                        })
 
-                    });
+                        timeoutObj = sleep(waiting);
+
+                        timeoutObj.promise.then(function () {
+                            $(".progress-bar").css("width", window.value + "%").attr("aria-valuenow", window.value);
+                            if (!check_finish()) {
+                                var test = sleep(550);
+                                test.promise.then(function () {
+                                    window.random_number = setInterval(function () {
+                                        var random = Math.floor(Math.random() * (75 - 1 + 1)) + 1;
+                                        $('.bigNumberDisplay p').text(random);
+                                    }, 100);
+                                    window.id = setInterval(frame, time_runing / 100);
+                                })
+                            }
+                        });
 
                 } else {
                     window.value = window.value + 1;
@@ -111,7 +114,22 @@ $(document).ready(function () {
                 $(this).text(numberString);
             }
         });
+        function check_finish(){
+            if (bingo.selectedNumbers.length >= 75) {
 
+                    count = 1;
+                    clearInterval(window.random_number);
+                    clearInterval(window.id);
+                    if (typeof timeoutObj  !== "undefined") {
+                        timeoutObj.cancel();
+                    }
+                    removeBarAnim();
+                    $('#btnStart').show();
+                    $('#btnStop').hide();
+                    alert('COMPLETE');
+                    return 1;
+                } else return 0;
+            }
         function sleep(time)
         {
             var timeout, promise;
@@ -144,29 +162,18 @@ $(document).ready(function () {
         }, false);
         var count = 1;
         $('#btnStart').click(async function () {
-            if (bingo.selectedNumbers.length == 75) {
-                count = 1;
-                clearTimeout(window.click_start);
-                clearTimeout(window.delay);
-                clearTimeout(window.click_random);
-                clearInterval(window.loto);
-                clearInterval(window.txt);
-                removeBarAnim();
-                $('#btnStart').show();
-                $('#btnStop').hide();
-                alert('COMPLETE');
-            } else {
-                if (count == 1) {
-                    theTrack.play()
-                    theTrack.volume = 1;
-                } else {
-                    count ++;
-                    theTrack.volume = 1;
-                }
-                $('#btnStart').hide();
-                $('#btnStop').show();
-                bingo.barAnim();
-            }
+           if(!check_finish()) {
+               if (count == 1) {
+                   theTrack.play()
+                   theTrack.volume = 1;
+               } else {
+                   count++;
+                   theTrack.volume = 1;
+               }
+               $('#btnStart').hide();
+               $('#btnStop').show();
+               bingo.barAnim();
+           }
         });
 
         $('#btnStop').click(function () {
